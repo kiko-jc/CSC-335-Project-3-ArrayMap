@@ -1,5 +1,21 @@
 package model;
 
 public class PunchCard {
-	//TODO: Fill out this class based on the UML diagram
+	
+	private int numVisits;
+	
+	public void punchCard() {
+		this.numVisits = 1;
+	}
+	
+	public void addVisit() {
+		this.numVisits += 1;
+	}
+	
+	public boolean isNthVisit(int n) {
+		if (numVisits % n == 0) {
+			return true;
+		}
+		return false;
+	}
 }

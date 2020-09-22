@@ -25,6 +25,7 @@ public class CashRegister {
 			PunchCard userCard = loyalty.getPunchCard(customerName);
 
 			// TODO add visit to punch card
+			userCard.addVisit();
 
 			System.out.print("What would you like to order? ");
 			String userInput = input.next();
@@ -46,9 +47,12 @@ public class CashRegister {
 			}
 
 			// TODO check if it's this customer's Nth visit, and apply discount if it is
+			if (userCard.isNthVisit(loyalty.VISITS_FOR_DISCOUNT)) {
+				System.out.printf("Cool, that will be $%.2f, take care!\n", currentTab - (currentTab * loyalty.DISCOUNT));
 
-			System.out.printf("Cool, that will be $%.2f, take care!\n", currentTab);
-
+			} else {
+				System.out.printf("Cool, that will be $%.2f, take care!\n", currentTab);
+			}
 			System.out.println("Enter \"exit\" to close down the store or anything else for the next customer.");
 		} while (!input.next().toLowerCase().equals("exit"));
 		input.close();
